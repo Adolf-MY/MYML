@@ -8,7 +8,7 @@ class RidgeRegressor(Regressor):
 
 	def _fit(self, X, t):
 		eye = np.eye(np.size(X, 1))
-		self.w = np.linalg.solve(self.alpha * eye + np.matmul(X.T,X), X.T @ t)
+		self.w = np.linalg.solve(self.alpha * eye + np.matmul(X.T,X), np.matmul(X.T,t))
 
 	def _predict(self, X):
 		y = np.matmul(X,self.w)
